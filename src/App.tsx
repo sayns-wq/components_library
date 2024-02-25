@@ -1,8 +1,17 @@
 import "./App.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faEnvelope,
+  faGear,
+  faHome,
+  faPhotoFilm,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
+
 import CircularNavigation from "./components/CircularNavigarion/CircularNavigation";
 import CountDownTimer from "./components/CountDownTimer/CountDownTimer";
-
-const config = {
+import NavigarionTab from "./components/NavigarionTab/NavigarionTab";
+const CountDownTimerConfig = {
   timerConfig: [
     {
       label: "Дней",
@@ -24,13 +33,44 @@ const config = {
   timerOrder: ["days", "hours", "minutes", "seconds"],
 };
 
+const NavigarionTabConfig = [
+  {
+    icon: <FontAwesomeIcon icon={faHome} />,
+    text: "Домой",
+    link: "#",
+  },
+  {
+    icon: <FontAwesomeIcon icon={faUser} />,
+    text: "Профиль",
+    link: "#",
+  },
+  {
+    icon: <FontAwesomeIcon icon={faEnvelope} />,
+    text: "Сообщения",
+    link: "#",
+  },
+  {
+    icon: <FontAwesomeIcon icon={faPhotoFilm} />,
+    text: "Форографии",
+    link: "#",
+  },
+  {
+    icon: <FontAwesomeIcon icon={faGear} />,
+    text: "Настройки",
+    link: "#",
+  },
+];
 const endDate = "01/01/2025 00:00:00";
 
 function App() {
   return (
     <div className="App">
       <CircularNavigation></CircularNavigation>
-      <CountDownTimer config={config} endDate={endDate}></CountDownTimer>
+      <CountDownTimer
+        config={CountDownTimerConfig}
+        endDate={endDate}
+      ></CountDownTimer>
+      <NavigarionTab config={NavigarionTabConfig} />
     </div>
   );
 }
