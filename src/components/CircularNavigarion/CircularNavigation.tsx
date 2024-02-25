@@ -27,6 +27,7 @@ const icons = [
 function CircularNavigation() {
   const [isActiveToggle, setIsActiveToggle] = useState(false);
   return (
+
     <div className={`${calsses.menu} ${isActiveToggle ? calsses.active : ""}`}>
       <div
         className={calsses.toggle}
@@ -40,13 +41,16 @@ function CircularNavigation() {
             className={calsses.menu_item}
             style={{
               transform: isActiveToggle
-                ? `rotate(calc(360deg / 8 * ${index})`
+                ? `rotate(calc(360deg / ${icons.length} * ${index})`
                 : "",
               transitionDelay: `calc(0.1s * ${index})`,
             }}
+            key={item.iconName}
           >
             <a href="#">
-              <FontAwesomeIcon icon={item} color="#000000" />
+              <FontAwesomeIcon icon={item} color="#000000" style={{
+                 transform: `rotate(calc(-360deg / ${icons.length} * ${index})`
+              }}/>
             </a>
           </div>
         );
