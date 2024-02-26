@@ -11,6 +11,7 @@ import {
 import CircularNavigation from "./components/CircularNavigarion/CircularNavigation";
 import CountDownTimer from "./components/CountDownTimer/CountDownTimer";
 import NavigarionTab from "./components/NavigarionTab/NavigarionTab";
+import NumberPicker from "./components/NumberPicker/NumberPicker";
 const CountDownTimerConfig = {
   timerConfig: [
     {
@@ -60,6 +61,14 @@ const NavigarionTabConfig = [
     link: "#",
   },
 ];
+
+const NumberPickerConfig = {
+  maxValue: 10,
+  colors: {
+    max: "#ff0000",
+    normal: "#0f0",
+  },
+};
 const endDate = "01/01/2025 00:00:00";
 
 function App() {
@@ -71,6 +80,7 @@ function App() {
         endDate={endDate}
       ></CountDownTimer>
       <NavigarionTab config={NavigarionTabConfig} />
+      <NumberPicker config={NumberPickerConfig} />
     </div>
   );
 }
