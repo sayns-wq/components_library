@@ -13,6 +13,7 @@ import CountDownTimer from "./components/CountDownTimer/CountDownTimer";
 import NavigarionTab from "./components/NavigarionTab/NavigarionTab";
 import NumberPicker from "./components/NumberPicker/NumberPicker";
 import Notification from "./components/Notification/Notification";
+import ComponentsBar from "./ComponentsBar/ComponentsBar";
 const CountDownTimerConfig = {
   timerConfig: [
     {
@@ -86,19 +87,41 @@ const notifivationVariants = [
     text: "Вы не можете регистрироваться",
   },
 ];
+
+const components = [
+  {
+    component: <CircularNavigation />,
+    name: "Circular Navigation",
+  },
+  {
+    component: (
+      <CountDownTimer config={CountDownTimerConfig} endDate={endDate} />
+    ),
+    name: "Countdown Timer",
+  },
+  {
+    component: <NavigarionTab config={NavigarionTabConfig} />,
+    name: "Navigation Tab",
+  },
+  {
+    component: <NumberPicker config={NumberPickerConfig} />,
+    name: "Number Picker",
+  },
+  {
+    component: (
+      <>
+        {notifivationVariants.map((item) => (
+          <Notification variant={item.variant} text={item.text} />
+        ))}
+      </>
+    ),
+    name: "Notification",
+  },
+];
 function App() {
   return (
     <div className="App">
-      <CircularNavigation></CircularNavigation>
-      <CountDownTimer
-        config={CountDownTimerConfig}
-        endDate={endDate}
-      ></CountDownTimer>
-      <NavigarionTab config={NavigarionTabConfig} />
-      <NumberPicker config={NumberPickerConfig} />
-      {notifivationVariants.map((item) => (
-        <Notification variant={item.variant} text={item.text} />
-      ))}
+      <ComponentsBar components={components} />
     </div>
   );
 }
