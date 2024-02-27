@@ -12,6 +12,7 @@ import CircularNavigation from "./components/CircularNavigarion/CircularNavigati
 import CountDownTimer from "./components/CountDownTimer/CountDownTimer";
 import NavigarionTab from "./components/NavigarionTab/NavigarionTab";
 import NumberPicker from "./components/NumberPicker/NumberPicker";
+import Notification from "./components/Notification/Notification";
 const CountDownTimerConfig = {
   timerConfig: [
     {
@@ -71,6 +72,20 @@ const NumberPickerConfig = {
 };
 const endDate = "01/01/2025 00:00:00";
 
+const notifivationVariants = [
+  {
+    variant: "info" as const,
+    text: "Вы успешно зарегистрировались",
+  },
+  {
+    variant: "worning" as const,
+    text: "Вы не можете регистрироваться",
+  },
+  {
+    variant: "danger" as const,
+    text: "Вы не можете регистрироваться",
+  },
+];
 function App() {
   return (
     <div className="App">
@@ -81,6 +96,9 @@ function App() {
       ></CountDownTimer>
       <NavigarionTab config={NavigarionTabConfig} />
       <NumberPicker config={NumberPickerConfig} />
+      {notifivationVariants.map((item) => (
+        <Notification variant={item.variant} text={item.text} />
+      ))}
     </div>
   );
 }
